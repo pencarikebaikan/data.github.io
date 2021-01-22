@@ -1,219 +1,66 @@
 ---
-title: "Mundana Free Jekyll Theme"
+# You don't need to edit this file, it's empty on purpose.
+# Edit theme's home layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: default
-pagination:
-    enabled: true
-description: "A great Jekyll theme developed by Sal @wowthemesnet."
 ---
+{% include hero.html %}
+{% include info-box.html %}
 
-
-<div class="container">
-    
-{% if page.url == "/" %}
-    
-    
-    
-<!-- Begin post excerpts, let's highlight the first 4 posts on top -->
-<div class="row remove-site-content-margin">
-    
-    <!-- latest post -->
-    {% assign latest_post = site.posts[0] %}
-    <div class="col-md-6">
-    <div class="card border-0 mb-4 box-shadow">   
-    <a href="{{site.baseurl}}{{latest_post.url}}">
-    <div class="topfirstimage" style="background-image: url({% if latest_post.image contains "://" %}{{ latest_post.image }}{% else %} {{site.baseurl}}/{{ latest_post.image}}{% endif %}); height: 200px;    background-size: cover;    background-repeat: no-repeat;"></div>     
-    </a>
-    <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
-    <h2 class="h4 font-weight-bold">
-    <a class="text-dark" href="{{site.baseurl}}{{latest_post.url}}">{{ latest_post.title }}</a>
-    </h2>
-    <p class="excerpt">
-        {{ latest_post.excerpt | strip_html | strip_newlines | truncate: 136 }}
-    </p>
-    <div>
-        <small class="d-block text-muted">
-            In <span class="catlist">
-                {% for category in latest_post.categories %}
-                <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                {% endfor %}
-                </span>                   
-        </small>
-        <small class="text-muted">
-            {{ latest_post.date | date: '%b %d, %Y' }}
-        </small>
-    </div>
-    </div>
-    </div>
-    </div>
-    
-    <div class="col-md-6">
-        
-        <!-- second latest post -->
-        {%- assign second_post = site.posts[1] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if second_post.image %}
-                <div class="col-md-4">
-                <a href="{{site.baseurl}}{{second_post.url}}">
-                 <img class="w-100" src="{% if second_post.image contains "://" %}{{ second_post.image }}{% else %}{{ second_post.image | absolute_url }}{% endif %}" alt="{{ second_post.title }}">
-                </a>
-                </div>
-                {% endif %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{second_post.url}}">{{ second_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        {% for category in second_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ second_post.date | date: '%b %d, %Y' }}
-                    </small>
-                </div>
-            </div>
-        
-        <!-- third latest post -->
-        {%- assign third_post = site.posts[2] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if third_post.image %}
-                <div class="col-md-4">
-                <a href="{{site.baseurl}}{{third_post.url}}">
-                 <img class="w-100" src="{% if third_post.image contains "://" %}{{ third_post.image }}{% else %}{{site.baseurl}}/{{ third_post.image }}{% endif %}" alt="{{ third_post.title }}">
-                </a>
-                </div>
-                {% endif %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{third_post.url}}">{{ third_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        {% for category in third_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ third_post.date | date: '%b %d, %Y' }}
-                    </small>
-                </div>
-            </div>
-        
-        <!-- fourth latest post -->
-        {%- assign fourth_post = site.posts[3] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if fourth_post.image %}
-                <div class="col-md-4">
-                <a href="{{site.baseurl}}{{fourth_post.url}}">
-                <img class="w-100" src="{% if fourth_post.image contains "://" %}{{ fourth_post.image }}{% else %}{{site.baseurl}}/{{ fourth_post.image }}{% endif %}" alt="{{ fourth_post.title }}">
-                </a>
-                </div>
-                {% endif %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{fourth_post.url}}">{{ fourth_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        {% for category in fourth_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ fourth_post.date | date: '%b %d, %Y' }}
-                    </small>
-                </div>
-            </div>
-        
-    </div>
-    
-</div>
-    
-<!-- Sticky - add sticky tag to the post you want to highlight here - tags: [sticky] -->
-{% for post in site.posts %} 
-{% if post.tags contains "sticky" %}
-<div class="jumbotron jumbotron-fluid jumbotron-home pt-0 pb-0 mt-3 mb-2rem bg-lightblue position-relative">
-    <div class="pl-4 pr-0 h-100 tofront">
-        <div class="row justify-content-between">
-            <div class="col-md-6 pt-6 pb-6 pr-lg-4 align-self-center">
-                <h1 class="mb-3">{{post.title}}</h1>
-                <p class="mb-3 lead">
-                    {{ post.excerpt | strip_html | strip_newlines | truncate: 136 }}
-                </p>
-                <a href="{{site.baseurl}}{{post.url}}" class="btn btn-dark">Read More</a>
-            </div>
-            <div class="col-md-6 d-none d-md-block pr-0" style="background-size:cover;background-image:url({{site.baseurl}}/{{ post.image }});">	
-            </div>
-        </div>
-    </div>
-</div> 
+{% if paginator.page %}
+  {% assign offset = paginator.page | minus:1 | times:paginator.per_page %}
+  {% assign currentPage = paginator.page %}
+{% else %}
+  {% assign offset = 0 %}
+  {% assign currentPage = 1 %}
 {% endif %}
-{% endfor %}
 
+<div class="content-wrap">
+  <div class="wrapper" data-page="{{ currentPage }}" data-totalPages="{{ paginator.total_pages }}">
+  {% for post in site.posts limit:site.paginate offset:offset %}
+   {% assign author = site.authors[post.author] %}
+    <article class="posts">
+      {% if post.img %}
+        <a class="post-thumbnail hidden" style="background-image: url({{"/images/pages/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}">
+          {% if author %}
+          <div class="author-box">
+            <div class="author-image-cover">
+              <div class="author-image-small" style="background-image: url({{"/images/" | prepend: site.baseurl | append: author.author-image}})"></div>
+            </div>
+            <div class="author-info">
+              <span class="meta">Date: <time datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%B %-d, %Y" %}{{ post.date | date: date_format }}</time></span><br>
+              <span>Author: {{ author.author-name }}</span>
+            </div>
+          </div>
+          {% else %}
+          <div class="author-box">
+            <div class="author-image-cover">
+              <div class="author-image-small" style="background-image: url({{"/images/" | prepend: site.baseurl | append: site.author-image}})"></div>
+            </div>
+            <div class="author-info">
+              <span class="meta">Date: <time datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%B %-d, %Y" %}{{ post.date | date: date_format }}</time></span><br>
+              <span>Author: {{ site.author-name }}</span>
+            </div>
+          </div>
+          {% endif %}
+          <div class="cover"></div>
+        </a>
+      {% endif %}
+      <div class="post-body {{ body-full }}">
+        <h2><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
+        <p>{% if post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | truncatewords: 20 }}{% endif %}</p>
+        <a href="{{site.baseurl}}{{ post.url }}" title="read more" class="more">Read more</a>
+      </div>
+      <div class="post-share">
+        <a class="share-icon share-twitter" href="https://twitter.com/intent/tweet?text={{ post.title | uri_escape }}&url={{ site.url }}{{ site.baseurl }}{{ post.url }}" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter" rel="nofollow"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 
-    
-
-
-{% endif %} <!--endif page url is / -->
-    
-
-
-<!-- Now the rest of the posts with the usual loop but with an offset:4 on the first page so we can skeep the first 4 posts displayed above -->
-    
-<div class="row mt-3">
-   
-    <div class="col-md-8 main-loop">
+        <a class="share-icon share-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ post.url }}" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook" rel="nofollow"><i class="fa fa-facebook" aria-hidden="true"></i></a>
         
-        <h4 class="font-weight-bold spanborder"><span>All Stories</span></h4>
-        
+        <a class="share-icon share-pinterest" href="http://pinterest.com/pin/create/button/?url={{ site.url }}{{ site.baseurl }}{{ post.url }}&amp;media={{ site.url }}/images/pages/{{ post.img }}&amp;description={{ post.title | uri_escape }}" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+      </div>
+    </article> <!-- /.posts -->
+  {% endfor %}
+  </div> <!-- /.wrapper -->
+</div> <!-- /.content-wrap -->
 
-        {% for post in paginator.posts %}
-        
-            {% include main-loop-card.html %}
-        
-        {% endfor %}
-        
-        <div class="mt-5">
-         <!-- Pagination links -->
-            {% if paginator.total_pages > 1 %}
-            <ul class="pagination"> 
-              {% if paginator.previous_page %}
-                <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a></li>
-              {% else %}
-                <li class="page-item disabled"><span class="prev page-link">&laquo;</span></li>
-              {% endif %}
-
-              {% for page in (1..paginator.total_pages) %}
-                {% if page == paginator.page %}
-                <li class="page-item disabled"><span class="webjeda page-link">{{ page }}</span></li>
-                {% elsif page == 1 %}
-                <li class="page-item"><a class="page-link" href="{{site.baseurl}}/">{{ page }}</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
-                {% endif %}
-              {% endfor %}
-
-              {% if paginator.next_page %}
-                <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a></li>
-              {% else %}
-                <li class="page-item disabled"><span class="next page-link">&raquo;</span></li>
-              {% endif %}
-            </ul>
-            {% endif %}      
-        </div>
-        
-    </div>
-    
-    <div class="col-md-4">
-        {% include sidebar-featured.html %}    
-    </div>
-    
-</div>
-
-
-
-</div>
+{% include pagination.html %}
